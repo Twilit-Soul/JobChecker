@@ -1,0 +1,23 @@
+<component name="libraryTable">
+  <library name="com.sun.mail:javax.mail:Latest" type="repository">
+    <properties maven-id="com.sun.mail:javax.mail:LATEST" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/javax.mail-1.5.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/activation-1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.mail-1.5.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/activation-1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.mail-1.5.6.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/activation-1.1.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/lib/javax.mail-1.5.5-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.mail-1.5.5-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.mail-1.5.6-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/lib/javax.mail-1.5.5-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.mail-1.5.5-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.mail-1.5.6-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
