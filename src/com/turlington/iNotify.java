@@ -8,7 +8,6 @@ public interface iNotify {
 
     /**
      * Announce that a job has been found.
-     * @param jobListing
      */
     void announce(JobListing jobListing);
 }

@@ -7,7 +7,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.Date;
 import java.util.Properties;
 
-public class EmailUtil {
+class EmailUtil {
 
     /**
      Outgoing Mail (SMTP) Server
@@ -15,11 +15,7 @@ public class EmailUtil {
      Use Authentication: Yes
      Port for TLS/STARTTLS: 587
      */
-    public static void sendEmail(JobListing jobListing) {
-        final String fromEmail = "examplejobfinder@gmail.com"; //requires valid gmail id
-        final String password = "XXXXXXXX"; // the password for fromEmail id
-        final String toEmail = "firstname.lastname@gmail.com"; // can be any email id
-
+    static void sendEmail(String fromEmail, String password, String toEmail, JobListing jobListing) {
         Properties props = new Properties();
         props.put("mail.smtp.host", "smtp.gmail.com"); //SMTP Host
         props.put("mail.smtp.port", "587"); //TLS Port
@@ -35,13 +31,13 @@ public class EmailUtil {
         };
         Session session = Session.getInstance(props, auth);
 
-        EmailUtil.sendEmail(session, toEmail, "New Job Found!", jobListing.getEmailText());
+        EmailUtil.sendEmail(session, fromEmail, toEmail, jobListing.getEmailSubject(), jobListing.getEmailText());
     }
 
     /**
      * Utility method to send simple HTML email.
      */
-    private static void sendEmail(Session session, String toEmail, String subject, String body){
+    private static void sendEmail(Session session, String fromEmail, String toEmail, String subject, String body){
         try
         {
             MimeMessage msg = new MimeMessage(session);
@@ -50,9 +46,9 @@ public class EmailUtil {
             msg.addHeader("format", "flowed");
             msg.addHeader("Content-Transfer-Encoding", "8bit");
 
-            msg.setFrom(new InternetAddress("jessjobfinder@gmail.com", "JessJobFinder"));
+            msg.setFrom(new InternetAddress(fromEmail, fromEmail));
 
-            msg.setReplyTo(InternetAddress.parse("jessjobfinder@gmail.com", false));
+            msg.setReplyTo(InternetAddress.parse(fromEmail, false));
 
             msg.setSubject(subject, "UTF-8");
 

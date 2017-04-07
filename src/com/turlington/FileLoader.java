@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
  * Saves and loads jobs from text file.
  * Created by Mitchell on 7/18/2016.
  */
-public class FileLoader {
+class FileLoader {
     private final Path filePath = Paths.get("jobs.txt");
 
     Set<String> getJobListingsFromFile() {

@@ -12,6 +12,7 @@ public class JobListing {
     private final String title;
     private String url = null;
     private Map<String, String> jobProperties = new HashMap<>();
+    private String emailSubject;
 
     JobListing(String title) {
         this.title = title;
@@ -32,22 +33,30 @@ public class JobListing {
         return Optional.empty();
     }
 
-    public void setUrl(String url) {
+    void setUrl(String url) {
         this.url = url;
     }
 
-    public String getTitle() {
+    String getTitle() {
         return title;
     }
 
-    public String getEmailText() {
-        String text = "Title: "+getTitle();
+    String getEmailText() {
+        StringBuilder text = new StringBuilder("Title: " + getTitle());
         if (getUrl().isPresent()) {
-            text += "\nLink: " +getUrl().get();
+            text.append("\nLink: ").append(getUrl().get());
         }
         for (Map.Entry<String, String> entry : getProperties().entrySet()) {
-            text+="\n"+entry.getKey()+": "+entry.getValue();
+            text.append("\n").append(entry.getKey()).append(": ").append(entry.getValue());
         }
-        return text;
+        return text.toString();
+    }
+
+    void setEmailSubject(String emailSubject) {
+        this.emailSubject = emailSubject;
+    }
+
+    String getEmailSubject() {
+        return emailSubject;
     }
 }

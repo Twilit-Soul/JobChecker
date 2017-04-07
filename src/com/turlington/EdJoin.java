@@ -18,11 +18,6 @@ public class EdJoin extends JobSite {
     }
 
     @Override
-    public void goToPage() {
-        webDriver.get(url);
-    }
-
-    @Override
     public Set<JobListing> getJobListings() {
         Set<JobListing> jobListings = new HashSet<>();
 
@@ -45,6 +40,7 @@ public class EdJoin extends JobSite {
     private JobListing getJobListing(WebElement row) {
         final WebElement jobTitle = row.findElement(By.cssSelector("td.footable-visible.footable-first-column > b:nth-child(1) > a"));
         final JobListing jobListing = new JobListing(jobTitle.getText());
+        jobListing.setEmailSubject("New EdJoin job found!");
         jobListing.setUrl(jobTitle.getAttribute("href"));
         final WebElement deadLine = row.findElement(By.cssSelector("td:nth-child(5)"));
         jobListing.addProperty("Deadline", deadLine.getText().trim());

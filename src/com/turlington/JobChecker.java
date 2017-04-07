@@ -3,43 +3,42 @@ package com.turlington;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+import java.util.Random;
 import java.util.Set;
+
 
 /**
  * Checks for job postings.
  * Created by Mitchell on 7/18/2016.
  */
 public class JobChecker implements iJobChecker {
-    private final WebDriver webDriver;
-    private final Set<JobSite> jobSites;
+	private final Set<JobSite> jobSites;
     private final Set<String> jobListings;
     private final FileLoader fileLoader;
     private final iNotify notifier;
 
-    public JobChecker(Set<JobSite> jobSites, FileLoader fileLoader, iNotify notifier) {
-        webDriver = new FirefoxDriver();
+    JobChecker(Set<JobSite> jobSites, FileLoader fileLoader, iNotify notifier) {
         this.notifier = notifier;
         this.fileLoader = fileLoader;
         this.jobListings = fileLoader.getJobListingsFromFile();
         this.jobSites = jobSites;
+		WebDriver driver = new FirefoxDriver();
         for (JobSite jobSite : jobSites) {
-            jobSite.setWebDriver(webDriver);
+            jobSite.setWebDriver(driver);
         }
     }
 
     @Override
     public void checkSites() {
+    	Random random = new Random();
         //noinspection InfiniteLoopStatement
-        while (true) { //TODO: probably should give a real way to exit the loop aside from terminating program manually.
+        while (true) { //TODO: maybe should give a real way to exit the loop aside from terminating program manually.
             for (JobSite jobSite : jobSites) {
                 jobSite.goToPage();
                 checkJobs(jobSite);
             }
-            try {
-                Thread.sleep(1800000L);
-            } catch (InterruptedException e) {
-                //Who cares
-            }
+            double minSeconds = random.nextDouble() + random.nextInt(3);
+            Main.waitMillis((long) (minSeconds * 60 * 1000));
         }
     }
 
