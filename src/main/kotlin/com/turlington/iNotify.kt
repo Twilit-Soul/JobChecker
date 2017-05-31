@@ -1,13 +1,12 @@
-package com.turlington;
+package com.turlington
 
 /**
  * What to do when a job is found.
  * Created by Mitchell on 7/18/2016.
  */
-public interface iNotify {
-
+interface iNotify {
     /**
      * Announce that a job has been found.
      */
-    void announce(JobListing jobListing);
+    fun announce(jobListing: JobListing)
 }

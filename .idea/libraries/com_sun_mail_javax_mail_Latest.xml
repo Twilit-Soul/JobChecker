@@ -40,6 +40,38 @@
       <root url="jar://$PROJECT_DIR$/lib/activation-1.1.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/javax.mail-1.6.0-rc1.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/activation-1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.mail-1.6.0-rc1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/activation-1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.mail-1.6.0-rc1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/activation-1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.mail-1.6.0-rc1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/activation-1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.mail-1.6.0-rc1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/activation-1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.mail-1.6.0-rc1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/activation-1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.mail-1.6.0-rc1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/activation-1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.mail-1.6.0-rc1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/activation-1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.mail-1.6.0-rc1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/activation-1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.mail-1.6.0-rc1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/activation-1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.mail-1.6.0-rc1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/activation-1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.mail-1.6.0-rc1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/activation-1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.mail-1.6.0-rc1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/activation-1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.mail-1.6.0-rc1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/activation-1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.mail-1.6.0-rc1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/activation-1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.mail-1.6.0-rc2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/activation-1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.mail-1.6.0-rc2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/activation-1.1.jar!/" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$PROJECT_DIR$/lib/javax.mail-1.5.5-javadoc.jar!/" />
@@ -61,6 +93,22 @@
       <root url="jar://$PROJECT_DIR$/lib/javax.mail-1.6.0-rc1-javadoc.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/javax.mail-1.6.0-rc1-javadoc.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/javax.mail-1.6.0-rc1-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.mail-1.6.0-rc1-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.mail-1.6.0-rc1-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.mail-1.6.0-rc1-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.mail-1.6.0-rc1-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.mail-1.6.0-rc1-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.mail-1.6.0-rc1-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.mail-1.6.0-rc1-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.mail-1.6.0-rc1-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.mail-1.6.0-rc1-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.mail-1.6.0-rc1-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.mail-1.6.0-rc1-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.mail-1.6.0-rc1-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.mail-1.6.0-rc1-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.mail-1.6.0-rc1-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.mail-1.6.0-rc2-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.mail-1.6.0-rc2-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
       <root url="jar://$PROJECT_DIR$/lib/javax.mail-1.5.5-sources.jar!/" />
@@ -82,6 +130,22 @@
       <root url="jar://$PROJECT_DIR$/lib/javax.mail-1.6.0-rc1-sources.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/javax.mail-1.6.0-rc1-sources.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/javax.mail-1.6.0-rc1-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.mail-1.6.0-rc1-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.mail-1.6.0-rc1-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.mail-1.6.0-rc1-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.mail-1.6.0-rc1-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.mail-1.6.0-rc1-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.mail-1.6.0-rc1-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.mail-1.6.0-rc1-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.mail-1.6.0-rc1-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.mail-1.6.0-rc1-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.mail-1.6.0-rc1-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.mail-1.6.0-rc1-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.mail-1.6.0-rc1-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.mail-1.6.0-rc1-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.mail-1.6.0-rc1-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.mail-1.6.0-rc2-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.mail-1.6.0-rc2-sources.jar!/" />
     </SOURCES>
   </library>
 </component>
