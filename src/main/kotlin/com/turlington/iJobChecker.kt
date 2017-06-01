@@ -6,5 +6,5 @@ package com.turlington
 interface iJobChecker {
     fun checkSites()
 
-    fun checkJobs(jobsite: JobSite)
+    fun checkJobs(jobSite: JobSite)
 }

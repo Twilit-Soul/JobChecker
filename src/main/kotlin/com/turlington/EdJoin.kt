@@ -16,18 +16,18 @@ internal class EdJoin internal constructor() : GsonSite<EdjoinSearchResult>(Edjo
     }
 
     override fun getJobListings(): Set<JobListing> {
-        return searchResult!!.data.map { this.getJobListing(it) }.toSet()
+        return searchResult?.data?.map { this.getJobListing(it) }?.toSet() ?: emptySet()
     }
 
     private fun getJobListing(data: Datum): JobListing {
-        val jobListing = JobListing(data.positionTitle)
+        val jobListing = JobListing(data.positionTitle!!)
         jobListing.emailSubject = "New EdJoin job found!"
         jobListing.setUrl("https://www.edjoin.org/Home/JobPosting/${data.postingID}")
-        jobListing.addProperty("Deadline", data.displayUntil)
-        jobListing.addProperty("City", data.city)
-        jobListing.addProperty("County", data.countyName)
-        jobListing.addProperty("District/School", data.districtName)
-        jobListing.addProperty("Salary Info", data.salaryInfo)
+        jobListing.addProperty("Deadline", data.displayUntil!!)
+        jobListing.addProperty("City", data.city!!)
+        jobListing.addProperty("County", data.countyName!!)
+        jobListing.addProperty("District/School", data.districtName!!)
+        jobListing.addProperty("Salary Info", data.salaryInfo!!)
         return jobListing
     }
 }

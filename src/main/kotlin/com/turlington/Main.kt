@@ -2,64 +2,46 @@ package com.turlington
 
 import java.nio.file.Files
 import java.nio.file.Paths
-import java.util.*
 
 object Main {
 
     @JvmStatic fun main(args: Array<String>) {
-        var fromEmail: String? = null
-        var password: String? = null
-        var toEmail: String? = null
-        val emailInfoPath = Paths.get("emailInfo.txt")
-        if (Files.exists(emailInfoPath)) {
-            val lines = Files.readAllLines(emailInfoPath)
-            if (lines.size != 3) {
-                explainEmailInfoAndQuit()
-            } else {
-                fromEmail = lines[0]
-                password = lines[1]
-                toEmail = lines[2]
-            }
-        } else {
-            explainEmailInfoAndQuit()
-        }
-        //TODO: move this to Wyzant constructor?
-        val wyzantInfoPath = Paths.get("wyzantInfo.txt")
-        var wyzantUsername: String? = null
-        var wyzantPassword: String? = null
-        if (Files.exists(wyzantInfoPath)) {
-            val lines = Files.readAllLines(wyzantInfoPath)
-            if (lines.size != 2) {
-                explainWyzantInfoAndQuit()
-            } else {
-                wyzantUsername = lines[0]
-                wyzantPassword = lines[1]
-            }
-        }
+        val emailInfo = getEmailInfo()!!
+        //val wyzantInfo = getWyzantInfo()!!
 
-        val jobSites = HashSet<JobSite>()
+        val jobSites: Set<JobSite> = setOf(EdJoin())
         //jobSites.add(new EdJoin(506));
         //jobSites.add(new EdJoin(517));
-        //jobSites.add(new WyzantJob(wyzantUsername, wyzantPassword));
+        //jobSites.add(new WyzantJob(wyzantInfo));
         //jobSites.add(new Indeed("Java", "Irvine", "fulltime"));
-        jobSites.add(EdJoin())
-        val jobChecker = JobChecker(jobSites, FileLoader(), Notify(fromEmail!!, password!!, toEmail!!))
-        jobChecker.checkSites()
+        JobChecker(jobSites, FileLoader(), Notify(emailInfo)).checkSites()
     }
 
-    internal fun explainWyzantInfoAndQuit() {
+    private fun getWyzantInfo(): WyzantInfo? {
+        val wyzantInfoPath = Paths.get("wyzantInfo.txt")
+        if (Files.exists(wyzantInfoPath)) {
+            val lines = Files.readAllLines(wyzantInfoPath)
+            if (lines.size == 2) return WyzantInfo(lines[0], lines[1])
+        }
         System.err.println("Need a wyzantInfo.txt in this format:")
         System.err.println("wyzantUserName")
         System.err.println("wyzantPassword")
         System.exit(1)
+        return null
     }
 
-    private fun explainEmailInfoAndQuit() {
+    private fun getEmailInfo(): EmailInfo? {
+        val emailInfoPath = Paths.get("emailInfo.txt")
+        if (Files.exists(emailInfoPath)) {
+            val lines = Files.readAllLines(emailInfoPath)
+            if (lines.size == 3) return EmailInfo(lines[0], lines[1], lines[2])
+        }
         System.err.println("Need an emailInfo.txt in this format:")
         System.err.println("fromEmailAddress (must be gmail)")
         System.err.println("passwordForFromEmail")
         System.err.println("toEmailAddress")
         System.exit(1)
+        return null
     }
 
     internal fun waitMillis(milliseconds: Long) {
@@ -70,3 +52,5 @@ object Main {
         }
     }
 }
+
+data class EmailInfo(val fromEmail: String, val password: String, val toEmail: String)

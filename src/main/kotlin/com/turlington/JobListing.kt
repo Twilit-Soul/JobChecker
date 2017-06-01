@@ -18,13 +18,6 @@ class JobListing internal constructor(internal val title: String) {
     private val properties: Map<String, String>
         get() = jobProperties
 
-    private fun getUrl(): Optional<String> {
-        if (url != null) {
-            return Optional.of(url!!)
-        }
-        return Optional.empty<String>()
-    }
-
     internal fun setUrl(url: String) {
         this.url = url
     }
@@ -32,8 +25,8 @@ class JobListing internal constructor(internal val title: String) {
     internal val emailText: String
         get() {
             val text = StringBuilder("Title: $title")
-            if (getUrl().isPresent) {
-                text.append("\nLink: ").append(getUrl().get())
+            if (url != null) {
+                text.append("\nLink: ").append(url)
             }
             for ((key, value) in properties) {
                 text.append("\n").append(key).append(": ").append(value)

@@ -14,7 +14,7 @@ internal abstract class WebDriverSite : JobSite() {
     var webDriver: WebDriver? = null
 
     override fun goToPage() {
-        webDriver?.get(url)
+        webDriver!!.get(url)
     }
 
     fun waitForElement(cssSelector: String, seconds: Int): WebElement {
@@ -34,7 +34,8 @@ internal abstract class WebDriverSite : JobSite() {
      * @param cssSelector Used to search child elements of jobElement.
      */
     fun addProperty(jobListing: JobListing, jobElement: WebElement, propertyName: String, cssSelector: String) {
-        val element = jobElement.findElement(By.cssSelector(cssSelector))
-        jobListing.addProperty(propertyName, element.text)
+        jobListing.addProperty(propertyName, jobElement.selectText(cssSelector))
     }
+
+    private fun WebElement.selectText(css: String) = findElement(By.cssSelector(css)).text
 }

@@ -10,8 +10,7 @@ internal class Indeed internal constructor(what: String, where: String, jobType:
 
     override fun getJobListings(): Set<JobListing> {
         handlePopUp()
-        val jobs = webDriver!!.findElements(By.cssSelector("div[data-tn-component='organicJob']"))
-        return jobs.map{ this.getJobListing(it) }.toSet()
+        return webDriver!!.findElements(By.cssSelector("div[data-tn-component='organicJob']")).map{ this.getJobListing(it) }.toSet()
     }
 
     /**

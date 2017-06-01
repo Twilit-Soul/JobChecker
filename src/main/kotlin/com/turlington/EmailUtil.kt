@@ -14,23 +14,19 @@ internal object EmailUtil {
      * Use Authentication: Yes
      * Port for TLS/STARTTLS: 587
      */
-    fun sendEmail(fromEmail: String, password: String, toEmail: String, jobListing: JobListing) {
+    fun sendEmail(emailInfo: EmailInfo, jobListing: JobListing) {
         val props = Properties()
         props.put("mail.smtp.host", "smtp.gmail.com") //SMTP Host
         props.put("mail.smtp.port", "587") //TLS Port
         props.put("mail.smtp.auth", "true") //enable authentication
         props.put("mail.smtp.starttls.enable", "true") //enable STARTTLS
 
-        //create Authenticator object to pass in Session.getInstance argument
         val auth = object : Authenticator() {
-            //override the getPasswordAuthentication method
-            override fun getPasswordAuthentication(): PasswordAuthentication {
-                return PasswordAuthentication(fromEmail, password)
-            }
+            override fun getPasswordAuthentication() = PasswordAuthentication(emailInfo.fromEmail, emailInfo.password)
         }
         val session = Session.getInstance(props, auth)
 
-        EmailUtil.sendEmail(session, fromEmail, toEmail, jobListing.emailSubject!!, jobListing.emailText)
+        EmailUtil.sendEmail(session, emailInfo.fromEmail, emailInfo.toEmail, jobListing.emailSubject!!, jobListing.emailText)
     }
 
     /**

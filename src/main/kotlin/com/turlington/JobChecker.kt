@@ -16,8 +16,7 @@ class JobChecker internal constructor(private val jobSites: Set<JobSite>, privat
     init {
         if (jobSites.stream().anyMatch { s -> s is WebDriverSite }) {
             val driver = FirefoxDriver()
-            jobSites.filterIsInstance<WebDriverSite>()
-                    .forEach { it.webDriver = driver }
+            jobSites.filterIsInstance<WebDriverSite>().forEach { it.webDriver = driver }
         }
     }
 
@@ -34,9 +33,9 @@ class JobChecker internal constructor(private val jobSites: Set<JobSite>, privat
         }
     }
 
-    override fun checkJobs(jobsite: JobSite) {
-        val jobsFound = jobsite.getJobListings()
-        jobsFound.stream().filter { jobListing -> !jobListings.contains(jobListing.title) }.forEach { jobListing ->
+    override fun checkJobs(jobSite: JobSite) {
+        val jobsFound = jobSite.getJobListings()
+        jobsFound.filter { !jobListings.contains(it.title) }.forEach { jobListing ->
             jobListings.add(jobListing.title)
             fileLoader.saveFile(jobListing)
             notifier.announce(jobListing)

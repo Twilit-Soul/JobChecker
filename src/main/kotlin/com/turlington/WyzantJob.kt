@@ -4,15 +4,15 @@ import org.openqa.selenium.By
 import org.openqa.selenium.WebElement
 import java.util.regex.Pattern
 
-internal class WyzantJob(private val username: String, private val password: String) : WebDriverSite() {
+internal class WyzantJob(private val wyzantInfo: WyzantInfo) : WebDriverSite() {
 
     private fun init(url: String) {
         if (!initialized) {
             webDriver!!.get(url)
             val userNameInput = webDriver!!.findElement(By.cssSelector("#Username"))
-            userNameInput.sendKeys(username)
+            userNameInput.sendKeys(wyzantInfo.username)
             val passwordInput = webDriver!!.findElement(By.cssSelector("#Password"))
-            passwordInput.sendKeys(password)
+            passwordInput.sendKeys(wyzantInfo.password)
             val signInButton = webDriver!!.findElement(By.cssSelector("#signinBtn"))
             signInButton.submit()
             initialized = true
@@ -52,3 +52,5 @@ internal class WyzantJob(private val username: String, private val password: Str
         private var initialized = false
     }
 }
+
+data class WyzantInfo(val username: String, val password: String)

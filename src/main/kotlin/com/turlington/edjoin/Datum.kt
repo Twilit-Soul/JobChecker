@@ -13,7 +13,12 @@ class Datum {
     private val endingSalary: Any? = null
     private val displayFlag: String? = null
     private val postingDate: String? = null
-    private val displayUntil: String? = null
+    val displayUntil: String? = null
+        get() {
+            val millis: Long = java.lang.Long.valueOf(field?.substring(6, field.length - 2)) ?: return null
+            val localDate = Instant.ofEpochMilli(millis).atZone(ZoneId.systemDefault()).toLocalDateTime()
+            return localDate.format(dateFormatter)
+        }
     val countyName: String? = null
     val districtName: String? = null
     val city: String? = null
@@ -36,12 +41,6 @@ class Datum {
     private val isSummerSchool: Boolean? = null
     private val limitPosting: Boolean? = null
     private val accountType: Int? = null
-
-    fun getDisplayUntil(): String {
-        val millis = java.lang.Long.valueOf(displayUntil!!.substring(6, displayUntil.length - 2))!!
-        val localDate = Instant.ofEpochMilli(millis).atZone(ZoneId.systemDefault()).toLocalDateTime()
-        return localDate.format(dateFormatter)
-    }
 
     companion object {
         private val dateFormatter = DateTimeFormatter.ofPattern("MM/dd/yyyy HH:mm a")
