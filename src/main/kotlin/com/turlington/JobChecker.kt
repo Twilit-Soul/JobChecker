@@ -13,20 +13,18 @@ import java.util.*
 class JobChecker internal constructor(private val jobSites: Set<JobSite>, private val fileLoader: FileLoader, private val notifier: iNotify) : iJobChecker {
     private val jobListings: MutableSet<String> = fileLoader.jobListingsFromFile as MutableSet<String>
 
-    init {
-        if (jobSites.stream().anyMatch { s -> s is WebDriverSite }) {
-            val driver = FirefoxDriver()
-            jobSites.filterIsInstance<WebDriverSite>().forEach { it.webDriver = driver }
-        }
-    }
-
     override fun checkSites() {
         val random = Random()
         val stopPath = Paths.get("stop.stop")
         while (Files.notExists(stopPath)) {
-            for (jobSite in jobSites) {
-                jobSite.goToPage()
-                checkJobs(jobSite)
+            try {
+                for (jobSite in jobSites) {
+                    jobSite.goToPage()
+                    checkJobs(jobSite)
+                }
+            } catch (e: Exception) {
+                System.err.println("Error checking sites: ${e.message}")
+                e.printStackTrace()
             }
             val minSeconds = random.nextDouble() + random.nextInt(3)
             Main.waitMillis((minSeconds * 60.0 * 1000.0).toLong())
@@ -34,11 +32,16 @@ class JobChecker internal constructor(private val jobSites: Set<JobSite>, privat
     }
 
     override fun checkJobs(jobSite: JobSite) {
-        val jobsFound = jobSite.getJobListings()
-        jobsFound.filter { !jobListings.contains(it.title) }.forEach { jobListing ->
-            jobListings.add(jobListing.title)
-            fileLoader.saveFile(jobListing)
-            notifier.announce(jobListing)
+        try {
+            val jobsFound = jobSite.getJobListings()
+            jobsFound.filter { !jobListings.contains(it.title) }.forEach { jobListing ->
+                jobListings.add(jobListing.title)
+                fileLoader.saveFile(jobListing)
+                notifier.announce(jobListing)
+            }
+        } catch (e: Exception) {
+            System.err.println("Error getting jobs: ${e.message}")
+            e.printStackTrace()
         }
     }
 }

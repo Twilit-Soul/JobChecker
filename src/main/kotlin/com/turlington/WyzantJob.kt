@@ -1,31 +1,28 @@
 package com.turlington
 
 import org.openqa.selenium.By
+import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
 import java.util.regex.Pattern
 
-internal class WyzantJob(private val wyzantInfo: WyzantInfo) : WebDriverSite() {
+internal class WyzantJob(webDriver: WebDriver, private val wyzantInfo: WyzantInfo) : WebDriverSite(webDriver, "https://www.wyzant.com/Tutor/Jobs?f=5&cat=10&sub=144&lt=2") {
 
     private fun init(url: String) {
         if (!initialized) {
-            webDriver!!.get(url)
-            val userNameInput = webDriver!!.findElement(By.cssSelector("#Username"))
+            webDriver.get(url)
+            val userNameInput = webDriver.findElement(By.cssSelector("#Username"))
             userNameInput.sendKeys(wyzantInfo.username)
-            val passwordInput = webDriver!!.findElement(By.cssSelector("#Password"))
+            val passwordInput = webDriver.findElement(By.cssSelector("#Password"))
             passwordInput.sendKeys(wyzantInfo.password)
-            val signInButton = webDriver!!.findElement(By.cssSelector("#signinBtn"))
+            val signInButton = webDriver.findElement(By.cssSelector("#signinBtn"))
             signInButton.submit()
             initialized = true
         }
     }
 
-    init {
-        url = "https://www.wyzant.com/Tutor/Jobs?f=5&cat=10&sub=144&lt=2"
-    }
-
     override fun getJobListings(): Set<JobListing> {
-        init(url!!)
-        val jobs = webDriver!!.findElements(By.cssSelector(".job-details.column.medium-8.large-9"))
+        init(url)
+        val jobs = webDriver.findElements(By.cssSelector(".job-details.column.medium-8.large-9"))
         return jobs.map{getJobListing(it)}.toSet()
     }
 

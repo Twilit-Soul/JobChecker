@@ -8,8 +8,8 @@ import java.io.IOException
 /**
  * Created by Mitchell on 4/22/2017.
  */
-abstract class JSoupSite : JobSite() {
-    internal var document: Document? = null
+abstract class JSoupSite(url: String) : JobSite(url) {
+    internal var document: Document = Jsoup.connect(url).get()
 
     override fun goToPage() {
         try {

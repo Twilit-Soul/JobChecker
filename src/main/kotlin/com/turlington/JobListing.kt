@@ -9,7 +9,7 @@ import java.util.*
 class JobListing internal constructor(internal val title: String) {
     private var url: String? = null
     private val jobProperties = HashMap<String, String>()
-    internal var emailSubject: String? = null
+    internal var emailSubject: String = "{Default Subject}"
 
     internal fun addProperty(name: String, value: String) {
         jobProperties.put(name, value)

@@ -1,16 +1,14 @@
 package com.turlington
 
 import org.openqa.selenium.By
+import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
 
-internal class Indeed internal constructor(what: String, where: String, jobType: String) : WebDriverSite() {
-    init {
-        url ="https://www.indeed.com/jobs?q=$what&l=$where&jt=$jobType"
-    }
+internal class Indeed internal constructor(webDriver: WebDriver, what: String, where: String, jobType: String) : WebDriverSite(webDriver, "https://www.indeed.com/jobs?q=$what&l=$where&jt=$jobType") {
 
     override fun getJobListings(): Set<JobListing> {
         handlePopUp()
-        return webDriver!!.findElements(By.cssSelector("div[data-tn-component='organicJob']")).map{ this.getJobListing(it) }.toSet()
+        return webDriver.findElements(By.cssSelector("div[data-tn-component='organicJob']")).map{ this.getJobListing(it) }.toSet()
     }
 
     /**

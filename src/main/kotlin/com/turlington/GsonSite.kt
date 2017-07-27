@@ -11,13 +11,13 @@ import java.io.InputStreamReader
  * Sends a GET request to the given url, and converts the json to type T.
  * Created by Mitchell on 4/22/2017.
  */
-internal abstract class GsonSite<T>(private val clazz: Class<T>) : JobSite() {
+internal abstract class GsonSite<T>(url: String, private val clazz: Class<T>) : JobSite(url) {
     private val gson = Gson()
     var searchResult: T? = null
 
     override fun goToPage() {
         try {
-            searchResult = gson.fromJson(sendGET(url!!), clazz)
+            searchResult = gson.fromJson(sendGET(url), clazz)
         } catch (e: IOException) {
             e.printStackTrace()
         }

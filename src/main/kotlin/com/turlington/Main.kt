@@ -6,18 +6,16 @@ import java.nio.file.Paths
 object Main {
 
     @JvmStatic fun main(args: Array<String>) {
-        val emailInfo = getEmailInfo()!!
-        //val wyzantInfo = getWyzantInfo()!!
+        val emailInfo = getEmailInfo()
+        //val wyzantInfo = getWyzantInfo()
 
-        val jobSites: Set<JobSite> = setOf(EdJoin())
-        //jobSites.add(new EdJoin(506));
-        //jobSites.add(new EdJoin(517));
-        //jobSites.add(new WyzantJob(wyzantInfo));
-        //jobSites.add(new Indeed("Java", "Irvine", "fulltime"));
+        val jobSites: MutableSet<JobSite> = HashSet()
+        if (args.contains("edjoin")) jobSites.add(EdJoin())
+        if (args.contains("blizzard")) jobSites.add(Blizzard())
         JobChecker(jobSites, FileLoader(), Notify(emailInfo)).checkSites()
     }
 
-    private fun getWyzantInfo(): WyzantInfo? {
+    private fun getWyzantInfo(): WyzantInfo {
         val wyzantInfoPath = Paths.get("wyzantInfo.txt")
         if (Files.exists(wyzantInfoPath)) {
             val lines = Files.readAllLines(wyzantInfoPath)
@@ -27,10 +25,10 @@ object Main {
         System.err.println("wyzantUserName")
         System.err.println("wyzantPassword")
         System.exit(1)
-        return null
+        return WyzantInfo("", "")
     }
 
-    private fun getEmailInfo(): EmailInfo? {
+    private fun getEmailInfo(): EmailInfo {
         val emailInfoPath = Paths.get("emailInfo.txt")
         if (Files.exists(emailInfoPath)) {
             val lines = Files.readAllLines(emailInfoPath)
@@ -41,7 +39,7 @@ object Main {
         System.err.println("passwordForFromEmail")
         System.err.println("toEmailAddress")
         System.exit(1)
-        return null
+        return EmailInfo("", "", "")
     }
 
     internal fun waitMillis(milliseconds: Long) {

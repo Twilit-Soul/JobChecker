@@ -26,7 +26,7 @@ internal object EmailUtil {
         }
         val session = Session.getInstance(props, auth)
 
-        EmailUtil.sendEmail(session, emailInfo.fromEmail, emailInfo.toEmail, jobListing.emailSubject!!, jobListing.emailText)
+        EmailUtil.sendEmail(session, emailInfo.fromEmail, emailInfo.toEmail, jobListing.emailSubject, jobListing.emailText)
     }
 
     /**
@@ -48,9 +48,7 @@ internal object EmailUtil {
 
             msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(toEmail, false))
             Transport.send(msg)
-        } catch (e: UnsupportedEncodingException) {
-            e.printStackTrace()
-        } catch (e: MessagingException) {
+        } catch (e: Exception) {
             e.printStackTrace()
         }
     }

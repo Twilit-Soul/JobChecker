@@ -10,11 +10,10 @@ import org.openqa.selenium.support.ui.WebDriverWait
  * This is a site that will be accessed via WebDriver.
  * Created by Mitchell on 4/22/2017.
  */
-internal abstract class WebDriverSite : JobSite() {
-    var webDriver: WebDriver? = null
+internal abstract class WebDriverSite(var webDriver: WebDriver, url: String) : JobSite(url) {
 
     override fun goToPage() {
-        webDriver!!.get(url)
+        webDriver.get(url)
     }
 
     fun waitForElement(cssSelector: String, seconds: Int): WebElement {
