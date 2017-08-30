@@ -3,6 +3,7 @@ package com.turlington
 import com.google.gson.Gson
 import org.apache.http.client.methods.HttpGet
 import org.apache.http.impl.client.HttpClientBuilder
+import org.apache.log4j.Logger
 import java.io.BufferedReader
 import java.io.IOException
 import java.io.InputStreamReader
@@ -12,6 +13,7 @@ import java.io.InputStreamReader
  * Created by Mitchell on 4/22/2017.
  */
 internal abstract class GsonSite<T>(url: String, private val clazz: Class<T>) : JobSite(url) {
+    private val logger = Logger.getLogger(javaClass)
     private val gson = Gson()
     var searchResult: T? = null
 
@@ -19,7 +21,7 @@ internal abstract class GsonSite<T>(url: String, private val clazz: Class<T>) : 
         try {
             searchResult = gson.fromJson(sendGET(url), clazz)
         } catch (e: IOException) {
-            e.printStackTrace()
+            logger.error(e)
         }
     }
 

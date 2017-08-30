@@ -1,17 +1,28 @@
 package com.turlington
 
+import org.apache.log4j.Logger
+import org.apache.log4j.PropertyConfigurator
 import java.nio.file.Files
 import java.nio.file.Paths
 
 object Main {
+    private val logger = Logger.getLogger(javaClass)
 
     @JvmStatic fun main(args: Array<String>) {
+        PropertyConfigurator.configure("log4j.properties")
+        logger.trace("Entering program.")
         val emailInfo = getEmailInfo()
         //val wyzantInfo = getWyzantInfo()
 
         val jobSites: MutableSet<JobSite> = HashSet()
-        if (args.contains("edjoin")) jobSites.add(EdJoin())
-        if (args.contains("blizzard")) jobSites.add(Blizzard())
+        if (args.contains("edjoin")) {
+            jobSites.add(EdJoin())
+            logger.info("Added edjoin to job site list.")
+        }
+        if (args.contains("blizzard")) {
+            jobSites.add(Blizzard())
+            logger.info("Added blizzard to job site list.")
+        }
         JobChecker(jobSites, FileLoader(), Notify(emailInfo)).checkSites()
     }
 
@@ -21,9 +32,7 @@ object Main {
             val lines = Files.readAllLines(wyzantInfoPath)
             if (lines.size == 2) return WyzantInfo(lines[0], lines[1])
         }
-        System.err.println("Need a wyzantInfo.txt in this format:")
-        System.err.println("wyzantUserName")
-        System.err.println("wyzantPassword")
+        logger.fatal("Need a wyzantInfo.txt in this format:\nwyzantUserName\nwyzantPassword")
         System.exit(1)
         return WyzantInfo("", "")
     }
@@ -34,10 +43,7 @@ object Main {
             val lines = Files.readAllLines(emailInfoPath)
             if (lines.size == 3) return EmailInfo(lines[0], lines[1], lines[2])
         }
-        System.err.println("Need an emailInfo.txt in this format:")
-        System.err.println("fromEmailAddress (must be gmail)")
-        System.err.println("passwordForFromEmail")
-        System.err.println("toEmailAddress")
+        logger.fatal("Need an emailInfo.txt in this format:\nfromEmailAddress (must be gmail)\npasswordForFromEmail\ntoEmailAddress")
         System.exit(1)
         return EmailInfo("", "", "")
     }

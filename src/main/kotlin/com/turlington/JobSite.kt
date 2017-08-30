@@ -6,6 +6,5 @@ package com.turlington
  */
 abstract class JobSite(val url: String) {
     internal abstract fun goToPage()
-
     abstract fun getJobListings(): Set<JobListing>
 }

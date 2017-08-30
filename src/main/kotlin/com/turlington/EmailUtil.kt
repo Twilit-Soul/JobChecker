@@ -1,12 +1,13 @@
 package com.turlington
 
-import java.io.UnsupportedEncodingException
+import org.apache.log4j.Logger
 import java.util.*
 import javax.mail.*
 import javax.mail.internet.InternetAddress
 import javax.mail.internet.MimeMessage
 
 internal object EmailUtil {
+    private val logger = Logger.getLogger(javaClass)
 
     /**
      * Outgoing Mail (SMTP) Server
@@ -43,13 +44,13 @@ internal object EmailUtil {
             msg.setFrom(InternetAddress(fromEmail, fromEmail))
             msg.replyTo = InternetAddress.parse(fromEmail, false)
             msg.setSubject(subject, "UTF-8")
-            msg.setText(body, "UTF-8")
+            msg.setContent(body, "text/html; charset=utf-8")
             msg.sentDate = Date()
 
             msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(toEmail, false))
             Transport.send(msg)
         } catch (e: Exception) {
-            e.printStackTrace()
+            logger.error(e)
         }
     }
 }
