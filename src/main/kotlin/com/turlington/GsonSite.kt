@@ -10,7 +10,7 @@ import java.io.InputStreamReader
 
 /**
  * Sends a GET request to the given url, and converts the json to type T.
- * Created by Mitchell on 4/22/2017.
+ * Created by Valerie on 4/22/2017.
  */
 internal abstract class GsonSite<T>(url: String, private val clazz: Class<T>) : JobSite(url) {
     private val logger = Logger.getLogger(javaClass)

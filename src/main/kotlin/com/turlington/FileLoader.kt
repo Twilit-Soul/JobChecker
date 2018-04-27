@@ -8,7 +8,7 @@ import java.util.stream.Collectors
 
 /**
  * Saves and loads jobs from text file.
- * Created by Mitchell on 7/18/2016.
+ * Created by Valerie on 7/18/2016.
  */
 internal class FileLoader {
     private val filePath = Paths.get("jobs.txt")

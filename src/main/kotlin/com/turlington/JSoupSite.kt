@@ -7,7 +7,7 @@ import org.jsoup.nodes.Document
 import java.io.IOException
 
 /**
- * Created by Mitchell on 4/22/2017.
+ * Created by Valerie on 4/22/2017.
  */
 abstract class JSoupSite(url: String) : JobSite(url) {
     private val logger = Logger.getLogger(javaClass)

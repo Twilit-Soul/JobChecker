@@ -2,7 +2,7 @@ package com.turlington
 
 /**
  * What to do when a job is found.
- * Created by Mitchell on 7/18/2016.
+ * Created by Valerie on 7/18/2016.
  */
 interface iNotify {
     /**

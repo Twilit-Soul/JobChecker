@@ -5,7 +5,7 @@ import com.turlington.edjoin.EdjoinSearchResult
 
 /**
  * Gets information about Edjon jobs.
- * Created by Mitchell on 7/18/2016.
+ * Created by Valerie on 7/18/2016.
  */
 internal class EdJoin internal constructor() : GsonSite<EdjoinSearchResult>("https://www.edjoin.org/Home/LoadJobs?" +
         "rows=10&page=1&sort=postingDate&order=desc&keywords=&searchType=all&states=24&regions=30&jobTypes=2,3,48,64,49" +

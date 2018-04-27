@@ -8,7 +8,7 @@ import java.util.*
 
 /**
  * Checks for job postings.
- * Created by Mitchell on 7/18/2016.
+ * Created by Valerie on 7/18/2016.
  */
 class JobChecker internal constructor(private val jobSites: Set<JobSite>, private val fileLoader: FileLoader, private val notifier: iNotify) : iJobChecker {
     private val logger = Logger.getLogger(javaClass)

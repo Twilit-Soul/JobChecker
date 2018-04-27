@@ -4,7 +4,7 @@ import java.util.*
 
 /**
  * Information about a job.
- * Created by Mitchell on 7/18/2016.
+ * Created by Valerie on 7/18/2016.
  */
 class JobListing internal constructor(internal val title: String, private var url: String? = null,
                                       internal var emailSubject: String = "{Default Subject}") {
